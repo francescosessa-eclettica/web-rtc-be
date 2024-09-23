@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" data-critters-container>
+<head>
+  <meta charset="utf-8">
+  <title>WebRtcCommunication</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://unpkg.com/event-target@latest/min.js"></script>
+  <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.global.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+  <style>
+    #webglCanvas {
+        border: 1px solid rgb(183, 5, 5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        z-index: 999999;
+    }
+    #testbutton {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 20%;
+        height: 10%;
+        z-index: 999999;
+    }
+    #testbutton1 {
+        position: absolute;
+        bottom: 0;
+        left: 20%;
+        width: 20%;
+        height: 10%;
+        z-index: 999999;
+    }
+</style>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+  <app-root></app-root>
+  <script src="http://localhost/xrsupport/Build/WebGL.loader.js"></script>
+  <script>
+    // createUnityInstance(document.querySelector("#unity-canvas"), {
+    //     dataUrl: "Build/WebGL.data",
+    //     frameworkUrl: "Build/WebGL.framework.js",
+    //     codeUrl: "Build/WebGL.wasm",
+    //     streamingAssetsUrl: "StreamingAssets",
+    //     companyName: "digitalmens",
+    //     productName: "XR Support",
+    //     productVersion: "0.2.273r",
+    //   // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+    //   // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+    // });
+  </script>
+  <!-- <canvas id="webglCanvas"></canvas>
+  <button id="testbutton">TEST</button>
+  <button id="testbutton1">TEST1</button>
+
+  <script src="./webgl.js"></script>
+
+  <script>
+      // Funzione per gestire il microfono
+      async function toggleMic() {
+        debugger;
+          if (window.micOn) {
+              if (window.audioStream) {
+                  const tracks = window.audioStream.getTracks();
+                  tracks.forEach(track => track.stop());
+              }
+              window.micOn = false;
+
+              // Genera evento "micoff"
+              const event = new CustomEvent('micoff');
+              document.dispatchEvent(event);
+          } else {
+              try {
+                  window.audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                  window.micOn = true;
+
+                  // Genera evento "micon"
+                  const event = new CustomEvent('micon');
+                  document.dispatchEvent(event);
+              } catch (err) {
+                  console.error("Errore nell'attivazione del microfono:", err);
+              }
+          }
+          render(); // Ridisegna l'icona
+      }
+
+      document.getElementById('testbutton').addEventListener('click', function(event) {
+        console.log('pippo');
+        const pippoEvent = new Event('pippo');
+          document.dispatchEvent(pippoEvent);
+      });
+
+      document.getElementById('testbutton1').addEventListener('click', function(event) {
+        console.log('testbutton1');
+        const mouseEvent = new MouseEvent('click', {
+          clientX: 100,
+          clientY: 100,
+        });
+        var canvas = document.getElementById('webglCanvas');
+        canvas.focus()
+        canvas.dispatchEvent(mouseEvent);
+          // document.dispatchEvent(mouseEvent);
+      });
+
+      // Ascolta il click del mouse e verifica se avviene sul pulsante
+      document.getElementById('webglCanvas').addEventListener('click', function(event) {
+          let rect = this.getBoundingClientRect();
+          let x = event.clientX - rect.left;
+          let y = event.clientY - rect.top;
+
+          // Controlla se il click avviene dentro il pulsante
+          if (x >= window.buttonCoords.x && x <= window.buttonCoords.x + window.buttonCoords.width &&
+              y >= window.buttonCoords.y && y <= window.buttonCoords.y + window.buttonCoords.height) {
+              toggleMic(); // Cambia stato del microfono
+          }
+      });
+
+      // Simulazione evento "pippo" (esempio)
+      // setTimeout(() => {
+      //     const pippoEvent = new Event('pippo');
+      //     document.dispatchEvent(pippoEvent);
+      // }, 5000); // Emette l'evento dopo 5 secondi come esempio
+
+      // Ascolta l'evento personalizzato "pippo"
+      document.addEventListener('pippo', toggleMic);
+  </script> -->
+<script src="polyfills.js" type="module"></script><script src="main.js" type="module"></script></body>
+</html>
