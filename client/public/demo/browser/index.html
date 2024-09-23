@@ -12,6 +12,35 @@
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
 <link rel="stylesheet" href="styles.css"></head>
 <body>
+  <script>
+    window.environment = {
+    production: false,
+    debug: true,
+    beHost: 'https://web-rtc-be-l6vw.onrender.com',
+    websocketHost: 'web-rtc-be-l6vw.onrender.com',
+    websocketUrl: 'wss://web-rtc-be-l6vw.onrender.com',
+    isStatsEnabled: false,
+    rtcConfig:{
+        // iceTransportPolicy : "relay",
+        sdpSemantics: "unified-plan",
+        iceServers: [
+            {
+                urls: 'turn:turn.solveup.it:3478',
+                username: 'turnros',
+                credential: 'RosTurn2020'
+            },
+            {
+                urls: 'turn:turn.digitalemens.com:3478',
+                username: 'turn_digital',
+                credential: 'Digital_2024!'
+            },
+            {
+                urls: 'stun:stun.l.google.com:19302'
+            }
+        ]
+    }
+}
+  </script>
   <web-rtc-communication connection-id="1234test"></web-rtc-communication>
   <script src="/xrsupport/Build/WebGL.loader.js"></script>
 
