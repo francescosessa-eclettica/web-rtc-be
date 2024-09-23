@@ -6,6 +6,7 @@ var WSSignaling = /** @class */ (function () {
     function WSSignaling(server, mode, app) {
         var _this = this;
         this.server = server;
+        console.log(JSON.stringify(server));
         this.wss = new websocket.Server({ server: server });
         handler.reset(mode);
         app.get('/getAllConnections', function (req, res) {

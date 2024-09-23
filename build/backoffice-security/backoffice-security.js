@@ -41,11 +41,11 @@ var jsonwebtoken_1 = require("jsonwebtoken"); // Per gestire i token JWT
 var tokenCache = new Map();
 var security = function (config) {
     return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-        var authHeader, token, cachedToken, now, isValid, userInfo, dbConfig, apiConfig, response, decodedToken, tokenPayload, error_1;
+        var authHeader, token, cachedToken, now, isValid, userInfo, dbConfig, apiConfig, response, apiConfig, response, decodedToken, tokenPayload, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 5, , 6]);
+                    _a.trys.push([0, 7, , 8]);
                     authHeader = req.headers.authorization;
                     if (!authHeader || !authHeader.startsWith('Bearer ')) {
                         return [2 /*return*/, res.status(401).json({ error: 'Token mancante o non valido' })];
@@ -64,7 +64,7 @@ var security = function (config) {
                     return [4 /*yield*/, dbConfig.queryDatabaseForToken(token)];
                 case 1:
                     isValid = _a.sent();
-                    return [3 /*break*/, 4];
+                    return [3 /*break*/, 6];
                 case 2:
                     if (!(config.handlerType === 'api')) return [3 /*break*/, 4];
                     apiConfig = config.handlerConfig;
@@ -75,8 +75,19 @@ var security = function (config) {
                     if (isValid && response.userInfo) {
                         userInfo = response.userInfo;
                     }
-                    _a.label = 4;
+                    return [3 /*break*/, 6];
                 case 4:
+                    if (!(config.handlerType === 'mock')) return [3 /*break*/, 6];
+                    apiConfig = config.handlerConfig;
+                    return [4 /*yield*/, apiConfig.callExternalApiForToken(token)];
+                case 5:
+                    response = _a.sent();
+                    isValid = response.valid;
+                    if (isValid && response.userInfo) {
+                        userInfo = response.userInfo;
+                    }
+                    _a.label = 6;
+                case 6:
                     if (!isValid) {
                         return [2 /*return*/, res.status(403).json({ error: 'Token non valido' })];
                     }
@@ -91,11 +102,11 @@ var security = function (config) {
                     });
                     req.user = tokenPayload;
                     next();
-                    return [3 /*break*/, 6];
-                case 5:
+                    return [3 /*break*/, 8];
+                case 7:
                     error_1 = _a.sent();
                     return [2 /*return*/, res.status(500).json({ error: 'Errore del server durante la verifica del token' })];
-                case 6: return [2 /*return*/];
+                case 8: return [2 /*return*/];
             }
         });
     }); };

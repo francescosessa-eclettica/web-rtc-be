@@ -44,7 +44,14 @@ var RenderStreaming = /** @class */ (function () {
             this.options.type = 'websocket';
         }
         if (this.options.type == 'websocket') {
-            console.log("Use websocket for signaling server ws://".concat(this.getIPAddress()[0]));
+            var wsUrl = 'ws://this.getIPAddress()[0]';
+            if (this.options.secure) {
+                wsUrl = 'wss://this.getIPAddress()[0]';
+            }
+            if (this.options.port != 80) {
+                wsUrl = "".concat(wsUrl, ":").concat(this.options.port);
+            }
+            console.log("Use websocket for signaling server ".concat(wsUrl));
             //Start Websocket Signaling server
             new websocket_1.default(this.server, this.options.mode, this.app);
         }

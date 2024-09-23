@@ -78,7 +78,14 @@ export class RenderStreaming {
       this.options.type = 'websocket';
     }
     if (this.options.type == 'websocket') {
-      console.log(`Use websocket for signaling server ws://${this.getIPAddress()[0]}`);
+      let wsUrl = 'ws://this.getIPAddress()[0]';
+      if (this.options.secure) {
+        wsUrl = 'wss://this.getIPAddress()[0]';
+      }
+      if(this.options.port != 80) {
+        wsUrl = `${wsUrl}:${this.options.port}`;
+      }
+      console.log(`Use websocket for signaling server ${wsUrl}`);
 
       //Start Websocket Signaling server
       new WSSignaling(this.server, this.options.mode, this.app);
