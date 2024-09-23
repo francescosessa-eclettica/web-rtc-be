@@ -1,0 +1,222 @@
+body {
+  margin: 0px;
+}
+
+#player {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #323232;
+    width: 100vw;
+    height: 100vh;
+}
+
+#player:before {
+  content: "";
+  display: block;
+  padding-top: 66%;
+}
+
+#playButton {
+  width: 15%;
+  max-width: 200px;
+  cursor: pointer;
+}
+
+#Video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#fullscreenButton {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 32px;
+  height: 32px;
+}
+
+#greenButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 160px;
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#blueButton {
+  position: absolute;
+  bottom: 10px;
+  left: 180px;
+  width: 160px;
+  background-color: #447FAF;
+  /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#orangeButton {
+  position: absolute;
+  bottom: 10px;
+  left: 350px;
+  width: 160px;
+  background-color: #FF7700;
+  /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#purpleButton {
+  position: absolute;
+  bottom: 10px;
+  left: 520px;
+  width: 160px;
+  background-color: #9c40b3;
+  /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#yellowButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 120px;
+  background-color: #dadd3f;
+  /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  color: #323232;
+}
+
+#html5colorpicker {
+  position: absolute;
+  bottom: 10px;
+  left: 690px;
+  width: 60px;
+  height: 40px;
+  /*background-color: #9c40b3;*/
+  /* Blue */
+  /*border: none;
+  color: white;*/
+  /*padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;*/
+}
+
+#thicknessContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 760px;
+  width: 160px;
+  background-color: #133d23;
+  /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#textareaContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 1000px;
+  width: 400px;
+  background-color: #33133d;
+  /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#html5colorpicker {
+  position: absolute;
+  bottom: 10px;
+  left: 690px;
+  width: 60px;
+  height: 40px;
+  /*background-color: #9c40b3;*/
+  /* Blue */
+  /*border: none;
+  color: white;*/
+  /*padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;*/
+}
+
+#radioButtonsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stile per i radio button */
+input[type="radio"] {
+  display: none; /* Nasconde il radio button nativo */
+}
+
+/* Stile per le etichette dei radio button */
+label {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 5px; /* Bordi arrotondati */
+}
+
+/* Stile per colorare il background dei radio button */
+input[type="radio"] + label {
+  background-color: transparent;
+}
+
+/* Stile per colorare il background dei radio button selezionati */
+input[type="radio"]:checked + label {
+  background-color: inherit;
+  color: white; /* Cambia il colore del testo quando selezionato */
+}

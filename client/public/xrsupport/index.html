@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>XR Support</title>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="warning" hidden="true"></div>
+    <div id="player"></div>
+    <div class="box" style="visibility: hidden;">
+      <span>Codec preferences:</span>
+      <select id="codecPreferences" autocomplete="off" disabled>
+        <option selected value="">Default</option>
+      </select>
+    </div>
+
+    <div class="box" style="visibility: hidden;">
+      <span>Lock Cursor to Player:</span>
+      <input type="checkbox" id="lockMouseCheck" autocomplete="off" />
+    </div>
+
+    <p style="visibility: hidden;">
+      For more information about sample, see
+        <a href="https://docs.unity3d.com/Packages/com.unity.renderstreaming@3.1/manual/sample-broadcast.html">Broadcast sample</a> document page.
+    </p>
+
+    <div id="message"></div>
+  </div>
+
+  <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://unpkg.com/event-target@latest/min.js"></script>
+  <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.global.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+  <script type="module" src="js/main.js"></script>
+
+  <!-- UNITY Audio streaming -->
+  <canvas id="unity-canvas" width=160 height=48 tabindex="-1" style=" width: 160px; height: 48px; display: block; top: 30px; background: rgb(35, 31, 32); position: absolute; cursor: default; left: 150px; display: none;" ></canvas>
+  <script src="Build/WebGL.loader.js"></script>
+  <script>
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      // Mobile device style: fill the whole browser client area with the game canvas:
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+
+      var canvas = document.querySelector("#unity-canvas");
+      //canvas.style.position = "absolute";
+      //canvas.style.top = "10px";
+      //canvas.style.left = "200px"
+
+      document.body.style.textAlign = "left";
+    }
+
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/WebGL.data",
+        frameworkUrl: "Build/WebGL.framework.js",
+        codeUrl: "Build/WebGL.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "digitalmens",
+        productName: "XR Support",
+        productVersion: "0.2.273r",
+      // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+      // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+    });
+  </script>
+
+</body>
+
+</html>
