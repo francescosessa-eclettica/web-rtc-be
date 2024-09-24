@@ -18,17 +18,12 @@
     debug: true,
     beHost: 'https://web-rtc-be-l6vw.onrender.com',
     websocketHost: 'web-rtc-be-l6vw.onrender.com',
-    websocketUrl: 'wss://web-rtc-be-l6vw.onrender.com',
+    websocketUrl: 'ws://51.38.179.124:8081',
     isStatsEnabled: false,
     rtcConfig:{
         // iceTransportPolicy : "relay",
         sdpSemantics: "unified-plan",
         iceServers: [
-            {
-                urls: 'turn:turn.solveup.it:3478',
-                username: 'turnros',
-                credential: 'RosTurn2020'
-            },
             {
                 urls: 'turn:turn.digitalemens.dev:3478',
                 username: 'turn_digital',
